@@ -8,7 +8,7 @@ import React from 'react';
 const InfoPage = () => (
   <div>
     <p>
-      Shelf Page
+      <input placeholder="description" /> <input placeholder="image/url" /> 
     </p>
   </div>
 );
