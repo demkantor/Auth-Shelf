@@ -7,8 +7,14 @@ import React from 'react';
 
 const InfoPage = () => (
   <div>
-    <p>
-      <input placeholder="description" /> <input placeholder="image/url" /> 
+    <p>{this.props &&
+    <ul>
+      {this.props.itemReducer.map(item=>(
+       <li>{item.description} {item.image_url}</li>
+      )
+      )}
+      </ul>
+      }
     </p>
   </div>
 );

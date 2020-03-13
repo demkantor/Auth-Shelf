@@ -22,7 +22,7 @@ import './App.css';
 class App extends Component {
   componentDidMount () {
     this.props.dispatch({type: 'FETCH_USER'})
-    // this.props.dispatch({type: 'FETCH_ITEMS'});
+    this.props.dispatch({type: 'FETCH_ITEMS'});
   }
 
   render() {
