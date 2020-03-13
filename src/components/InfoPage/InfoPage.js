@@ -1,4 +1,4 @@
-import React, { useState, useEffect, ReactDOM } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 
 // This is one of our simplest components
@@ -8,11 +8,19 @@ import { connect } from 'react-redux';
 
 
 function InfoPage(pfrog) {
+  
   const thing = pfrog.itemReducer;
   const corona = thing.map((item) =>
-    <li>{item.description} <br/> <img src={item.image_url}/></li>
-    
+    <li key={item.id}>
+      {item.description} 
+    <br/> 
+    <img src={item.image_url} alt={item.description}/> 
+    <br/> 
+    <button onClick={() => pfrog.dispatch({ type: 'REMOVE_ITEM', payload: {match: item.id}})}>delete</button>
+    </li> 
   );
+
+
   return (
     <ul>{corona}</ul>
   );

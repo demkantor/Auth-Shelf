@@ -35,14 +35,32 @@ router.post('/', (req, res) => {
 });
 
 
+// /**
+//  * Delete an item if it's something the logged in user added
+//  */
+// router.delete('/:id', (req, res) => {
+//     console.log('req.user:', req.user);
+//     if(req.isAuthenticated()){
+//         queryString = (`DELETE from "item" WHERE "item"."user_id" = '${req.user.id}';`)
+//         pool.query(queryString, [req.body.description, req.body.image_url])
+//         .then(results => res.send(results.rows))
+//         .catch(error => {
+//             console.log('Error making SELECT for secrets:', error);
+//             res.sendStatus(500);
+//         });
+//     }else{
+//         res.sendStatus(403);
+//     }
+// });
+
 /**
  * Delete an item if it's something the logged in user added
  */
 router.delete('/:id', (req, res) => {
-    console.log('req.user:', req.user);
+    console.log('in delete with: req.user:', req.user, "req.params.id", req.params.id);
     if(req.isAuthenticated()){
-        queryString = (`DELETE from "item" WHERE "item"."user_id" = '${req.user.id}';`)
-        pool.query(queryString, [req.body.description, req.body.image_url])
+        queryString = (`DELETE from "item" WHERE "id" = $1;`)
+        pool.query(queryString, [Number(req.params.id)])
         .then(results => res.send(results.rows))
         .catch(error => {
             console.log('Error making SELECT for secrets:', error);
