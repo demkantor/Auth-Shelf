@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { put, takeEvery } from 'redux-saga/effects';
+import { put, takeLatest } from 'redux-saga/effects';
 
 // worker Saga: will be fired on "FETCH_USER" actions
 function* fetchUser() {
@@ -24,16 +24,9 @@ function* fetchUser() {
   }
 }
 
-function* fetchItems(){
-  
-  const items = yield axios.get('/api/shelf');
-  console.log('in user sage with', items.data);
-  yield put({ type: 'SET_ITEMS', payload: items.data });
-}
 
 function* userSaga() {
-  yield takeEvery('FETCH_USER', fetchUser);
-  yield takeEvery('FETCH_ITEMS', fetchItems);
+  yield takeLatest('FETCH_USER', fetchUser);
 }
 
 

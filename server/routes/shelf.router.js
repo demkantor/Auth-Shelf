@@ -6,13 +6,12 @@ const router = express.Router();
  * Get all of the items on the shelf```
  */
 router.get('/', (req, res) => {
-    router.get('/', (req, res) => {
-        pool.query(`SELECT * FROM item`)
-        .then(results => res.send(results.rows))
-        .catch(error => {
-            console.log('Error making SELECT for secrets:', error);
-            res.sendStatus(500);
-        });
+    console.log('in get')
+    pool.query(`SELECT * FROM item`)
+    .then(results => res.send(results.rows))
+    .catch(error => {
+        console.log('Error making SELECT for secrets:', error);
+        res.sendStatus(500);
     });
 });
 

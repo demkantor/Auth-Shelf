@@ -28,7 +28,7 @@ if (process.env.DATABASE_URL) {
   };
 } else {
   config = {
-  
+    
     host: 'localhost', // Server hosting the postgres database
     port: 5432, // env var: PGPORT
     database: 'auth_shelf', // Database name
