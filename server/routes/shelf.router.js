@@ -1,11 +1,9 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
-const image = require('../../public/bike.jpg');
-
 
 /**
- * Get all of the items on the shelf
+ * Get all of the items on the shelf```
  */
 router.get('/', (req, res) => {
     res.sendStatus(200); // For testing only, can be removed
